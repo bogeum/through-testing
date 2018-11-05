@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:scrollbars="vertical"
+    tools:openDrawer="start">
+
+    <!--드로어 레이아웃은 왼 -> 오로 열기 위한 레이아웃
+    toolbar = include -> 내용 기술 -> 메뉴영역(Navigation)
+    순으로 xml을 작성한다.
+    fitsSystemWindow 자동으로 패딩 설정-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--toolbar include-->
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/app_bar_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <RelativeLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+
+            <!--메일 확인 recyclerView-->
+            <include
+                layout="@layout/fragment_check"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></include>
+
+
+            <!--메일 쓰기 floating-->
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/send_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:backgroundTint="@color/mainColor"
+                android:src="@drawable/pencil"
+                app:borderWidth="0dp"
+                app:fabSize="normal"
+                app:useCompatPadding="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <include
+            android:id="@+id/nav_header"
+            layout="@layout/nav_header_mail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"></include>
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>
